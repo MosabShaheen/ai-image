@@ -1,18 +1,19 @@
 "use client";
 import { useState, FormEvent } from "react";
 
-
 export default function GeneratorForm() {
   const [prompt, setPrompt] = useState("");
   const [imageSrc, setImageSrc] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    console.log(prompt);
     const response = await fetch("/api/image-generator", {
       method: "POST",
       body: JSON.stringify(prompt),
     });
     const data = await response.json();
+    console.log(data.dataUrl);
     setImageSrc(data.dataUrl);
   };
 
