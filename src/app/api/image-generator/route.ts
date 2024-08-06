@@ -19,6 +19,7 @@ export const POST = async (request: NextRequest) => {
         },
         body: formData
       })
+      
       if (response.status === 200) {
         console.log(response)
         const arrayBuffer = await response.arrayBuffer()
